@@ -1,0 +1,39 @@
+Avaliação de Algoritmos de Ordenação
+Este programa (evalenum.c) avalia o desempenho de diferentes algoritmos de ordenação, medindo:
+
+Número de comparações
+
+Número de movimentações de dados
+
+Número de chamadas recursivas
+
+Algoritmos disponíveis
+Código	Algoritmo
+i	Insertion Sort
+s	Selection Sort
+q	QuickSort
+q3	QuickSort com Mediana de Três
+qi	QuickSort com Inserção
+q3i	QuickSort + Mediana de Três + Inserção
+h	ShellSort
+rs	Selection Sort Recursivo
+
+Como usar
+Compilação:
+gcc evalenum.c -o evalenum
+
+Execução:
+./evalenum -z <tamanho_do_vetor> -s <semente> -a <algoritmo>
+Parâmetros:
+-z <int> : Tamanho do vetor a ser ordenado (ex: 10000)
+
+-s <int> : Semente para geração dos números aleatórios
+
+-a <alg>: Algoritmo de ordenação (usar o código da tabela acima)
+
+-h : Mostra ajuda/uso
+
+Exemplo:
+./evalenum -z 10000 -s 42 -a q3
+Ordena um vetor de 10.000 elementos usando QuickSort com mediana de três.
+
