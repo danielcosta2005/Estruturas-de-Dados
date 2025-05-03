@@ -1,0 +1,44 @@
+# Projeto PA2 - Representação de Grafos com Lista de Adjacência
+
+Este projeto implementa um grafo não direcionado usando listas de adjacência. O programa recebe um grafo por entrada padrão e executa operações com base em um argumento fornecido na linha de comando.
+
+## Compilação
+
+Para compilar o projeto, use o comando:
+
+```
+make all
+```
+
+O executável será gerado na pasta `bin` com o nome `pa2.out`.
+
+## Execução
+
+Execute o programa da seguinte forma:
+
+```
+./bin/pa2.out -<opção>
+```
+
+### Opções disponíveis
+
+- `-d`: Imprime dados básicos do grafo (número de vértices, número de arestas, grau mínimo e grau máximo).
+- `-n`: Imprime os vizinhos de cada vértice.
+- `-k`: Verifica se o grafo é completo (imprime 1 se for completo, 0 caso contrário).
+
+## Entrada
+
+A entrada deve ser fornecida pela entrada padrão no seguinte formato:
+
+1. Um inteiro `n` representando o número de vértices.
+2. `n` linhas seguintes contendo:
+   - Um inteiro `m` representando o número de vizinhos do vértice `i`.
+   - `m` inteiros representando os vértices vizinhos de `i`.
+
+Exemplo de entrada:
+```
+3
+2 1 2
+2 0 2
+2 0 1
+```
