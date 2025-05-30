@@ -1,0 +1,102 @@
+# Gerando o arquivo README.md com o conteúdo formatado
+
+readme_content = """
+# Ordenador Universal
+
+## Sobre
+
+Este projeto implementa um **ordenador universal**, uma estrutura capaz de escolher automaticamente entre os algoritmos de **Insertion Sort** e **Quicksort com mediana de 3**, dependendo das características do vetor de entrada. A escolha é baseada em dois parâmetros calibrados:
+
+- **Limiar de Quebras:** define quando um vetor é considerado "quase ordenado", favorecendo o uso do Insertion Sort.
+- **Tamanho Mínimo de Partição:** define quando usar Quicksort ou Insertion Sort nas partições.
+
+O objetivo é maximizar o desempenho adaptando dinamicamente o algoritmo de ordenação ao vetor de entrada.
+
+## Funcionalidades
+
+- Ordenação inteligente adaptativa.
+- Calibração automática dos parâmetros de desempenho.
+- Coleta de estatísticas: comparações, movimentações e chamadas de função.
+- Programação robusta com técnicas de defensiva e tolerância a falhas.
+
+## Estrutura do Projeto
+
+### Principais Métodos
+
+- **ordenarUniversal()**  
+Escolhe entre `insertionSort` e `quickSort3Ins` com base no limiar de quebras e tamanho de partição.
+
+- **determinarTamParticao(int* v, int tam)**  
+Calcula o menor tamanho de subvetor no qual ainda é vantajoso usar Quicksort em vez de Insertion Sort.
+
+- **determinarLimiarQuebras(int* v, int tam)**  
+Determina a quantidade de quebras a partir da qual é melhor usar Quicksort em vez de Insertion Sort.
+
+- **calibra()**  
+Executa ambos os métodos acima para determinar os parâmetros ideais de ordenação.
+
+- **shuffleVector()**  
+Insere quebras controladas em vetores para simulações.
+
+- **calcularCusto()**  
+Calcula o custo total ponderado:  
+`Custo = a * comparações + b * movimentações + c * chamadas`.
+
+## Complexidade dos Algoritmos
+
+| Função                 | Tempo            | Espaço         |
+|------------------------|------------------|----------------|
+| swap, median, calcularCusto, calcularNovaFaixa | O(1) | O(1) |
+| shuffleVector, copiarVetor, determinarNumeroQuebras | O(n) | O(1) (exceto copiarVetor: O(n)) |
+| menorCusto             | O(n)             | O(1)           |
+| quickSort3Ins          | O(n log n) médio, O(n²) pior | O(log n) médio, O(n) pior |
+| insertionSort          | O(n²) pior, O(n) melhor | O(1)        |
+| determinarTamParticao, determinarLimiarQuebras | O(n log² n) | O(n) |
+
+## Robustez
+
+### Programação Defensiva
+
+- Verificação de parâmetros de entrada.
+- Validação da abertura correta de arquivos.
+- Checagem de índices válidos e proteção contra divisão por zero.
+
+### Tolerância a Falhas
+
+- Uso de vetores auxiliares para testes, preservando dados originais.
+- Garantias de progresso nos loops de calibração.
+
+## Plano Experimental
+
+### Variáveis de Teste
+
+- **Grau de Ordenação:** ordenado, inversamente ordenado, e parcialmente desordenado.
+- **Tamanho da Chave:** ajustado via coeficiente de custo `a`.
+- **Tamanho do Registro:** ajustado via coeficiente de custo `b`.
+- **Tamanho do Vetor:** 100, 1.000, 10.000 e 100.000 elementos.
+
+### Métricas Coletadas
+
+- Número de comparações.
+- Número de movimentações.
+- Número de chamadas de função.
+- Custo total ponderado.
+- Tempo de execução.
+- Limiar de quebras e tamanho mínimo de partição calculados.
+
+## Resultados Principais
+
+- Quando **custo de comparação (a)** é alto, o algoritmo favorece QuickSort (menor número de comparações).
+- Quando **custo de movimentação (b)** é alto, o algoritmo favorece Insertion Sort (menos movimentações).
+- O algoritmo é altamente sensível ao grau de ordenação inicial:
+  - Vetores ordenados → Insertion Sort domina.
+  - Vetores inversamente ordenados → QuickSort domina.
+  - Vetores parcialmente ordenados → equilíbrio adaptativo.
+
+## Conclusões
+
+O projeto demonstrou que algoritmos híbridos e adaptativos são superiores em ambientes variados. A calibração dinâmica dos parâmetros permite extrair o melhor desempenho possível, tanto em termos teóricos (complexidade) quanto práticos (tempo de execução).
+
+O trabalho reforça a importância de se entender profundamente os custos operacionais dos algoritmos e como adaptá-los para diferentes contextos.
+
+
